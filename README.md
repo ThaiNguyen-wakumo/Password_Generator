@@ -1,0 +1,1 @@
+This project is to create a password generator that can generate a random string with some requirements such as including Uppercase, Digit, Punct and no Character Duplicate.
