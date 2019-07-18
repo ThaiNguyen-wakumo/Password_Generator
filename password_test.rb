@@ -3,6 +3,16 @@ require 'minitest/autorun'
 require 'pry'
 
 class PasswordTest < MiniTest::Test
+
+  def test_uniq
+    assert_equal Password.generate.split('').uniq.size, Password.generate.split('').size
+  end  
+
+  def test_length
+    password = Password.generate(length: 10)
+    assert_equal password.size, 10
+  end
+  
   def test_unique
     assert_equal Password.generate.split('').uniq.size, Password.generate.split('').size
   end  
@@ -11,7 +21,7 @@ class PasswordTest < MiniTest::Test
     password = Password.generate(length: 10)
     assert_equal password.size, 10
   end
-
+  
   def test_digit
     password = Password.generate(length: 10, digit: 2)
     assert_equal password.size, 10
