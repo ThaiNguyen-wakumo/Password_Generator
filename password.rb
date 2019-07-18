@@ -8,10 +8,6 @@ class Password
   PUNCT = ('#'..'.').to_a
 
   def self.generate (length: 10, upper: 2, digit: 2, punct: 1, unique: true)
-    if unique == true && digit + punct + upper <= length
-      (UPPER.sample(upper) + DIGIT.sample(digit) + PUNCT.sample(punct) + ALPHA.sample(length-digit-upper-punct)).shuffle.join
-    else
-      return false
-    end 
+    (UPPER.sample(upper) + DIGIT.sample(digit) + PUNCT.sample(punct) + ALPHA.sample(length-digit-upper-punct)).shuffle.join if unique == true && digit + punct + upper <= length
   end
 end
