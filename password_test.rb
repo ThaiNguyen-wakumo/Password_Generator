@@ -5,25 +5,28 @@ require 'pry'
 class PasswordTest < MiniTest::Test
 	def test_unique
  	    assert_equal Password.generate.split('').uniq.size, Password.generate.split('').size
-    end 
+    end  
     
     def test_length
-        assert_equal Password.generate.size, length
+      password = Password.generate(length: 10)
+      assert_equal password.size, 10
     end
 
     def test_digit
-        assert_match (/[0-9]/), Password.generate, (digit)
-    end	
+      password = Password.generate(length: 10, digit: 2)
+      assert_equal password.size, 10
+      assert_match /[0-9]/, password, 2
+    end
 
     def test_upper
-        assert_match (/[A-Z]/), Password.generate
+      password = Password.generate(length: 10, upper: 2)
+      assert_equal password.size, 10
+      assert_match /[A-Z]/, password, 2
     end
 
     def test_punct
-      assert_match (/[#-.]/), Password.generate
+      password = Password.generate(length: 10, punct: 1)
+      assert_equal password.size, 10
+      assert_match /[#-.]/, password, 1
     end
-
-    def test_alpha 
-    	assert_match (/[a-z]/), Password.generate, (length-upper-punct-digit)
-    end 
 end
