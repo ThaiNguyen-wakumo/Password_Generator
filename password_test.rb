@@ -3,7 +3,7 @@ require 'minitest/autorun'
 require 'pry'
 
 class PasswordTest < MiniTest::Test
-	def test_unique
+	def test_uniq
  	    assert_equal Password.generate.split('').uniq.size, Password.generate.split('').size
     end  
     
